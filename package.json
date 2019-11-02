@@ -1,0 +1,15 @@
+{
+  "name": "remessabanco",
+  "version": "1.0.0",
+  "description": "Biblioteca para geração de arquivos de remessa de bancos no formato .txt e .rem",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/index.js"
+  },
+  "author": "Elton Marques",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^1.19.4"
+  }
+}
