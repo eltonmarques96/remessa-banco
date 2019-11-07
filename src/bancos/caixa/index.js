@@ -554,14 +554,39 @@ class bancoCaixa {
       for (i = 124; i <= 240; i++) {
         stringLinha5 = stringLinha5.concat(" ");
       }
+      stringLinha5 = stringLinha5.concat("\n");
 
-
+      //Trailler de Arquivo
+      //01.9= Código Banco
+      stringLinha6 = stringLinha6.concat("104");
+      //02.9 = Lote Serviços (Preencher 9999)
+      stringLinha6 = stringLinha6.concat("9999");
+      //03.9 = Tipo Registro
+      stringLinha6 = stringLinha6.concat("9");
+      //04.9 = Uso exclusivo banco
+      for (i = 9; i <= 17; i++) {
+        stringLinha6 = stringLinha6.concat(" ");
+      }
+      //05.9 = Qtde. Lotes Arquivo
+      stringLinha6 = stringLinha6.concat("000001");
+      //06.9 = Qtde Registros Arquivos - Somatória total de linhas do arquivo
+      stringLinha6 = stringLinha6.concat("000202");
+      //07.9 = Uso exclusivo banco
+      for (i = 30; i <= 35; i++) {
+        stringLinha6 = stringLinha6.concat(" ");
+      }
+      //08.9 = Uso exclusivo banco
+      for (i = 36; i <= 240; i++) {
+        stringLinha6 = stringLinha6.concat(" ");
+      }
+      
       const linhas =
         stringLinha +
         stringLinha2 +
         stringLinha3 +
         stringLinha4 +
-        stringLinha5;
+        stringLinha5 +
+        stringLinha6;
       console.log(linhas)
       geradorTXT.generateTXT(remessa_path, linhas)
       console.log('processo de geração de arquivo remessa finalizado')
