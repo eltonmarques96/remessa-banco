@@ -12,6 +12,7 @@ var stringLinha4 = "";
 //Array de retorno
 var textoRemessa = [];
 //Passando lote de serviço de int para string formato XXXX
+const geradorTXT = require('../../remessaTXT')
 
 class bancoCaixa {
   gerarRemessa(
@@ -76,9 +77,23 @@ class bancoCaixa {
     tipoInscricao_Sacador_Avalista,
     numeroInscricao_Sacador_Avalista,
     nomeSacador_Sacador_Avalista,
-    nossoNumeroBancoCorrespondente
-  ) {
+    nossoNumeroBancoCorrespondente,
+    remessa_path) {
 
+    // String que será provinda da conversão do lote de serviço
+    var stringLoteServico = ''
+    var stringSequencialLoteServico = ''
+    var stringNumeroDeDiasBaixa_Devolucao = ''
+    var stringNumeroDeDiasParaProtesto = ''
+    var i;
+    //String que adiciona conteudo de cada linha
+    var stringLinha = "";
+    var stringLinha2 = "";
+    var stringLinha3 = "";
+    var stringLinha4 = "";
+    //Array de retorno
+    var textoRemessa = [];
+    //Passando lote de serviço de int para string formato XXXX
 
     //Conversão de valor do loteServiço de inteiro para string no formato XXXX
     loteServico = 10000 + loteServico
@@ -111,7 +126,7 @@ class bancoCaixa {
     CidadeSacado = CidadeSacado.toUpperCase()
     ufSacado = ufSacado.toUpperCase()
     ufSacado = ufSacado.substring(0, 2)
-    
+
 
 
 
@@ -142,7 +157,7 @@ class bancoCaixa {
     CC = 11 (título Registrado emissão CAIXA)
     CC = 14 (título Registrado emissão Cedente)
     CC = 21 (título Sem Registro emissão CAIXA)
-*/
+    */
 
     /*
     Espécie do Título
@@ -484,7 +499,7 @@ class bancoCaixa {
     //17.3Q = Tipo de Inscrição Sacador Avalista
     stringLinha4 = stringLinha4.concat(tipoInscricao_Sacador_Avalista);
     //18.3Q = Numero inscrição sacador avalista
-    for (i = 0; i < 15 - (numeroInscricao_Sacador_Avalista.length) ; i++) {
+    for (i = 0; i < 15 - (numeroInscricao_Sacador_Avalista.length); i++) {
       stringLinha4 = stringLinha4.concat("0");
     }
     stringLinha4 = stringLinha4.concat(numeroInscricao_Sacador_Avalista);
@@ -495,13 +510,10 @@ class bancoCaixa {
     }
     //20.3Q - Uso Exclusivo
     stringLinha4 = stringLinha4.concat("   ");
-    
+
     //NÃO SEI SE ESTÁ CERTO, ESTOU ME BASEANDO PELO SOFTWARE DE VALIDAÇÃO DA CAIX
     stringLinha4 = stringLinha4.concat(nossoNumeroBancoCorrespondente);
     stringLinha4 = stringLinha4.concat("        ");
-
-
-
 
     // //21.3Q = Uso Exclusivo
     // for (i = 210; i <= 212; i++) {
@@ -527,6 +539,7 @@ class bancoCaixa {
     // stringLinha4 = [stringLinha4.slice(0, 73), nomeEmpresa, stringLinha.slice(73 + nomeEmpresa.length)].join('');
 
     //Retornando texto de remessa
+    geradorTXT.generateTXT(remessa_path, stringLinha + stringLinha2 + stringLinha3 + stringLinha4)
     return stringLinha + stringLinha2 + stringLinha3 + stringLinha4;
   }
 }

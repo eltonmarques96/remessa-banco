@@ -1,4 +1,4 @@
-const bancoCaixa = require('./bancos/caixa/index.js');
+const bancoCaixa = require('./index').gerarRemessaCaixa;
 const geradorRemessa = require('./remessaTXT');
 var PATH = require(`path`);
 
@@ -65,8 +65,8 @@ const numeroInscricao_Sacador_Avalista = "05554254527"
 const nomeSacador_Sacador_Avalista = "VLADEMIR VALENTIN NASCIMENTO DOS SANTOS"
 const nossoNumeroBancoCorrespondente = "12345678912345678912"
 
-
-const remessa = bancoCaixa.gerarRemessa(
+const filepath = PATH.resolve(__dirname, 'uploads', `${new Date().getTime()}.REM`)
+const remessa = bancoCaixa(
   loteServico,
   sequencialLoteServico,
   tipoInscricao,
@@ -128,9 +128,10 @@ const remessa = bancoCaixa.gerarRemessa(
   tipoInscricao_Sacador_Avalista,
   numeroInscricao_Sacador_Avalista,
   nomeSacador_Sacador_Avalista,
-  nossoNumeroBancoCorrespondente
+  nossoNumeroBancoCorrespondente,
+  filepath
 );
 
 console.log(remessa)
-filepath = PATH.resolve(__dirname, 'uploads', `${new Date().getTime()}.REM`)
+
 geradorRemessa.generateTXT(filepath, remessa)
