@@ -132,6 +132,6 @@ const remessa = bancoCaixa(
   filepath
 );
 
-console.log(remessa)
+// console.log(remessa)
 
-geradorRemessa.generateTXT(filepath, remessa)
+// geradorRemessa.generateTXT(filepath, remessa)

@@ -69,7 +69,7 @@ module.exports.gerarRemessaCaixa = function (
   // const filepath = PATH.resolve(__dirname, 'uploads', `${new Date().getTime()}.REM`)
   // const filepath = PATH.resolve(__dirname, 'uploads')
   try {
-    geradorRemessaCaixa.gerarRemessa(loteServico,
+    const response = geradorRemessaCaixa.gerarRemessa(loteServico,
       sequenciaLoteServico,
       tipoInscricao,
       numeroInscricao,
@@ -132,6 +132,7 @@ module.exports.gerarRemessaCaixa = function (
       nomeSacador_Sacador_Avalista,
       nossoNumeroBancoCorrespondente,
       filepath)
+    return response;
   } catch (error) {
     console.log(error)
   }
