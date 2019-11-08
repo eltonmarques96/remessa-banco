@@ -1,6 +1,6 @@
 {
   "name": "remessabanco",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Biblioteca para geração de arquivos de remessa de bancos no formato .txt e .rem",
   "main": "src/index.js",
   "scripts": {
