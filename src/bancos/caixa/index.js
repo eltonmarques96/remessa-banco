@@ -104,8 +104,11 @@ class bancoCaixa {
 
       //Passando o strins para maiusculo
       nomeEmpresa = nomeEmpresa.toUpperCase()
+      nomeEmpresa = nomeEmpresa.substring(0, 30)
       mensagem1 = mensagem1.toUpperCase()
+      mensagem1 =  mensagem1.substring(0, 40)
       mensagem2 = mensagem2.toUpperCase()
+      mensagem2 =  mensagem2.substring(0, 40)
       nomeSacado = nomeSacado.substring(0, 40)
       nomeSacado = nomeSacado.toUpperCase()
       enderecoSacado = enderecoSacado.substring(0, 40)
