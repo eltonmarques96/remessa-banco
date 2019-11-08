@@ -287,6 +287,7 @@ class bancoCaixa {
       }
       else if (tipoInscricao === "2") {
         //CNPJ
+        stringLinha2 = stringLinha2.concat("0");
         stringLinha2 = stringLinha2.concat(numeroInscricao);
       }
       //11.1 = Código Convênio
