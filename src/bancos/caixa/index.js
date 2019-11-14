@@ -68,6 +68,7 @@ class bancoCaixa {
     remessa_path) {
 
     try {
+      valorTitulo.toString()
       // String que será provinda da conversão do lote de serviço
       var stringLoteServico = ''
       var stringSequencialLoteServico = ''
