@@ -68,7 +68,6 @@ class bancoCaixa {
     remessa_path) {
 
     try {
-      valorTitulo.toString()
       // String que será provinda da conversão do lote de serviço
       var stringLoteServico = ''
       var stringSequencialLoteServico = ''
@@ -82,6 +81,8 @@ class bancoCaixa {
       var stringLinha4 = "";
       var stringLinha5 = "";
       var stringLinha6 = "";
+
+      var valorTituloString = "";
       //Array de retorno
       var textoRemessa = [];
       //Passando lote de serviço de int para string formato XXXX
@@ -107,9 +108,9 @@ class bancoCaixa {
       nomeEmpresa = nomeEmpresa.toUpperCase()
       nomeEmpresa = nomeEmpresa.substring(0, 29)
       mensagem1 = mensagem1.toUpperCase()
-      mensagem1 =  mensagem1.substring(0, 39)
+      mensagem1 = mensagem1.substring(0, 39)
       mensagem2 = mensagem2.toUpperCase()
-      mensagem2 =  mensagem2.substring(0, 39)
+      mensagem2 = mensagem2.substring(0, 39)
       nomeSacado = nomeSacado.substring(0, 39)
       nomeSacado = nomeSacado.toUpperCase()
       enderecoSacado = enderecoSacado.substring(0, 39)
@@ -121,6 +122,7 @@ class bancoCaixa {
       ufSacado = ufSacado.toUpperCase()
       ufSacado = ufSacado.substring(0, 2)
 
+      valorTituloString = valorTitulo.toString()
 
 
 
@@ -391,10 +393,10 @@ class bancoCaixa {
       //21.3P = Data Vencimento de titulo
       stringLinha3 = stringLinha3.concat(dataVencimentoTitulo);
       //22.3P = Valor titulo
-      for (i = 0; i < 15 - (valorTitulo.length); i++) {
+      for (i = 0; i < 15 - (valorTituloString.length); i++) {
         stringLinha3 = stringLinha3.concat("0");
       }
-      stringLinha3 = stringLinha3.concat(valorTitulo);
+      stringLinha3 = stringLinha3.concat(valorTituloString);
       //23.3P = Agencia encarregada da cobrança
       stringLinha3 = stringLinha3.concat(agenciaEncarregadaCobranca);
       //24.3P = DV-Agencia
@@ -405,6 +407,13 @@ class bancoCaixa {
       stringLinha3 = stringLinha3.concat(identificaoTituloAceitacao);
       //27.3P = Data de emissão do titulo
       stringLinha3 = stringLinha3.concat(dataEmissaoTitulo);
+      //28.3P = Código de Juros de Mora
+      /*
+      ‘1’ = Valor por Dia
+      ‘2’ = Taxa Mensal
+      ‘3’ = Isento
+      */
+      stringLinha3 = stringLinha3.concat(codigoJurosDeMora);
       //29.3P = Data do Juros de Mora
       stringLinha3 = stringLinha3.concat(dataJurosDeMora);
       //30.3P = Juros de Mora por Dia/Taxa
@@ -530,10 +539,10 @@ class bancoCaixa {
       //Futuramente a poderá ser feita a importação de multiplos boletos
       stringLinha5 = stringLinha5.concat("000001");
       //07.5 = Valor total Títulos Carteira - Cobrança Simples
-      for (i = 0; i < 16 - (valorTitulo.length); i++) {
+      for (i = 0; i < 16 - (valorTituloString.length); i++) {
         stringLinha5 = stringLinha5.concat("0");
       }
-      stringLinha5 = stringLinha5.concat(valorTitulo);
+      stringLinha5 = stringLinha5.concat(valorTituloString);
       //08.5 = TQuantidade de títulos em Cobrança - Cobrança Caucionada
       for (i = 47; i <= 52; i++) {
         stringLinha5 = stringLinha5.concat("0");
@@ -584,7 +593,7 @@ class bancoCaixa {
       for (i = 36; i <= 240; i++) {
         stringLinha6 = stringLinha6.concat(" ");
       }
-      
+
       const linhas =
         stringLinha +
         stringLinha2 +
